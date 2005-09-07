@@ -1,5 +1,3 @@
-# TODO
-# - pl description
 Summary:	Common C++ class framework for RTP/RTCP
 Summary(pl):	Szkielet klas C++ dla RTP/RTCP
 Name:		ccrtp
@@ -25,6 +23,15 @@ automatically, supports different threading models and is generic as
 for underlying network and transport protocols.
 
 %description -l pl
+ccRTP jest ogólnym, rozszerzalnym i efektywnym szkieletem C++ dla
+rozwijania aplikacji bazuj±cych na transporcie czasu rzeczywistego
+(RTP) z IETF. Bazuje na Common C++ i udostêpnia pe³en stos RTP/RTCP do
+wysy³ania i odbierania danych w czasie rzeczywistym z u¿yciem kolejek
+wysy³ania i odbierania pakietów. ccRTP obs³uguje unicasty,
+multi-unicasty i multicasty, zarz±dza wieloma ¼ród³ami, obs³uguje
+automatycznie RTCP, wspiera ró¿ne modele w±tkowania i jest ogólny dla
+podstawowych sieci i protoko³ów transportowych.
+
 
 %package devel
 Summary:	Header files for ccrtp library
