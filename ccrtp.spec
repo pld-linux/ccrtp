@@ -7,7 +7,7 @@ License:	GPL
 Group:		Libraries
 Source0:	ftp://ftp.gnu.org/pub/gnu/ccrtp/%{name}-%{version}.tar.gz
 # Source0-md5:	a73a524ced1105e738cddb8574c469de
-URL:		http://www.gnu.org/software/ccrtp
+URL:		http://www.gnu.org/software/ccrtp/
 BuildRequires:	commoncpp2-devel
 BuildRequires:	doxygen
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -23,7 +23,7 @@ automatically, supports different threading models and is generic as
 for underlying network and transport protocols.
 
 %description -l pl
-ccRTP jest ogólnym, rozszerzalnym i efektywnym szkieletem C++ dla
+ccRTP jest ogólnym, rozszerzalnym i efektywnym szkieletem C++ do
 rozwijania aplikacji bazuj±cych na transporcie czasu rzeczywistego
 (RTP) z IETF. Bazuje na Common C++ i udostêpnia pe³en stos RTP/RTCP do
 wysy³ania i odbierania danych w czasie rzeczywistym z u¿yciem kolejek
@@ -31,7 +31,6 @@ wysy³ania i odbierania pakietów. ccRTP obs³uguje unicasty,
 multi-unicasty i multicasty, zarz±dza wieloma ¼ród³ami, obs³uguje
 automatycznie RTCP, wspiera ró¿ne modele w±tkowania i jest ogólny dla
 podstawowych sieci i protoko³ów transportowych.
-
 
 %package devel
 Summary:	Header files for ccrtp library
@@ -79,7 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc %doc AUTHORS COPYING COPYING.addendum README
+%doc AUTHORS COPYING COPYING.addendum README
 %attr(755,root,root) %{_libdir}/lib*.so.*.*.*
 
 %files devel
@@ -89,7 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.la
 %{_includedir}/ccrtp
 %{_pkgconfigdir}/*.pc
-%{_infodir}/*
+%{_infodir}/*.info*
 
 %files static
 %defattr(644,root,root,755)
