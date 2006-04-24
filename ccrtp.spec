@@ -1,12 +1,12 @@
 Summary:	Common C++ class framework for RTP/RTCP
 Summary(pl):	Szkielet klas C++ dla RTP/RTCP
 Name:		ccrtp
-Version:	1.3.6
+Version:	1.3.7
 Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	ftp://ftp.gnu.org/pub/gnu/ccrtp/%{name}-%{version}.tar.gz
-# Source0-md5:	5dddefbbc9c455a05816ded8e56adda6
+# Source0-md5:	6621be1852bd90c3dbbafa895618d8f0
 URL:		http://www.gnu.org/software/ccrtp/
 BuildRequires:	commoncpp2-devel
 BuildRequires:	doxygen
