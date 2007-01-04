@@ -9,8 +9,11 @@ Source0:	ftp://ftp.gnu.org/pub/gnu/ccrtp/%{name}-%{version}.tar.gz
 # Source0-md5:	728c41edd62be2871eac50be287f97ee
 Patch0:		%{name}-gcc4.patch
 URL:		http://www.gnu.org/software/ccrtp/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	commoncpp2-devel >= 1.5.0
 BuildRequires:	doxygen
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -63,6 +66,12 @@ Statyczna biblioteka ccrtp.
 %patch0 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
+cp -f /usr/share/automake/config.sub .
 %configure
 %{__make}
 
