@@ -71,7 +71,6 @@ Statyczna biblioteka ccrtp.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-cp -f /usr/share/automake/config.sub .
 %configure
 %{__make}
 
