@@ -1,5 +1,5 @@
 Summary:	Common C++ class framework for RTP/RTCP
-Summary(pl):	Szkielet klas C++ dla RTP/RTCP
+Summary(pl.UTF-8):   Szkielet klas C++ dla RTP/RTCP
 Name:		ccrtp
 Version:	1.5.1
 Release:	1
@@ -26,19 +26,19 @@ multi-unicast and multicast, manages multiple sources, handles RTCP
 automatically, supports different threading models and is generic as
 for underlying network and transport protocols.
 
-%description -l pl
-ccRTP jest og髄nym, rozszerzalnym i efektywnym szkieletem C++ do
-rozwijania aplikacji bazuj眂ych na transporcie czasu rzeczywistego
-(RTP) z IETF. Bazuje na Common C++ i udost阷nia pe砮n stos RTP/RTCP do
-wysy砤nia i odbierania danych w czasie rzeczywistym z u縴ciem kolejek
-wysy砤nia i odbierania pakiet體. ccRTP obs硊guje unicasty,
-multi-unicasty i multicasty, zarz眃za wieloma 紃骴砤mi, obs硊guje
-automatycznie RTCP, wspiera r罂ne modele w眛kowania i jest og髄ny dla
-podstawowych sieci i protoko丑w transportowych.
+%description -l pl.UTF-8
+ccRTP jest og贸lnym, rozszerzalnym i efektywnym szkieletem C++ do
+rozwijania aplikacji bazuj膮cych na transporcie czasu rzeczywistego
+(RTP) z IETF. Bazuje na Common C++ i udost臋pnia pe艂en stos RTP/RTCP do
+wysy艂ania i odbierania danych w czasie rzeczywistym z u偶yciem kolejek
+wysy艂ania i odbierania pakiet贸w. ccRTP obs艂uguje unicasty,
+multi-unicasty i multicasty, zarz膮dza wieloma 藕r贸d艂ami, obs艂uguje
+automatycznie RTCP, wspiera r贸偶ne modele w膮tkowania i jest og贸lny dla
+podstawowych sieci i protoko艂贸w transportowych.
 
 %package devel
 Summary:	Header files for ccrtp library
-Summary(pl):	Pliki nag丑wkowe biblioteki ccrtp
+Summary(pl.UTF-8):   Pliki nag艂贸wkowe biblioteki ccrtp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	commoncpp2-devel
@@ -46,19 +46,19 @@ Requires:	commoncpp2-devel
 %description devel
 Header files for ccrtp library.
 
-%description devel -l pl
-Pliki nag丑wkowe biblioteki ccrtp.
+%description devel -l pl.UTF-8
+Pliki nag艂贸wkowe biblioteki ccrtp.
 
 %package static
 Summary:	Static ccrtp library
-Summary(pl):	Statyczna biblioteka ccrtp
+Summary(pl.UTF-8):   Statyczna biblioteka ccrtp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static ccrtp library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka ccrtp.
 
 %prep
