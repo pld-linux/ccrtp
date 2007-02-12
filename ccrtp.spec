@@ -1,5 +1,5 @@
 Summary:	Common C++ class framework for RTP/RTCP
-Summary(pl.UTF-8):   Szkielet klas C++ dla RTP/RTCP
+Summary(pl.UTF-8):	Szkielet klas C++ dla RTP/RTCP
 Name:		ccrtp
 Version:	1.5.1
 Release:	1
@@ -38,7 +38,7 @@ podstawowych sieci i protokołów transportowych.
 
 %package devel
 Summary:	Header files for ccrtp library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki ccrtp
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki ccrtp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	commoncpp2-devel
@@ -51,7 +51,7 @@ Pliki nagłówkowe biblioteki ccrtp.
 
 %package static
 Summary:	Static ccrtp library
-Summary(pl.UTF-8):   Statyczna biblioteka ccrtp
+Summary(pl.UTF-8):	Statyczna biblioteka ccrtp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
