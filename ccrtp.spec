@@ -5,7 +5,7 @@ Version:	1.6.2
 Release:	1
 License:	GPL
 Group:		Libraries
-Source0:	ftp://ftp.gnu.org/pub/gnu/ccrtp/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnu.org/gnu/ccrtp/%{name}-%{version}.tar.gz
 # Source0-md5:	e6abc10abc0784f2aa4dd5597c1f1ad5
 Patch0:		%{name}-gcc4.patch
 Patch1:		%{name}-lt.patch
