@@ -1,0 +1,231 @@
+diff -urN ccrtp-1.6.2.org/ccrtp.list.in ccrtp-1.6.2/ccrtp.list.in
+--- ccrtp-1.6.2.org/ccrtp.list.in	2008-06-23 15:02:28.000000000 +0200
++++ ccrtp-1.6.2/ccrtp.list.in	2008-08-23 12:59:37.617389899 +0200
+@@ -30,9 +30,9 @@
+ l 0644 root root ${libdir}/libccrtp1.dylib libccrtp1-@VERSION@.dylib
+ l 0644 root root ${libdir}/libccrtp1.dylib-@VERSION@.@LT_SUBVER@.dylib libccrtp1-@VERSION@.dylib
+ %system freebsd
+-f 0644 root root ${libdir} ./src/.libs/libccrtp1-@LT_RELEASE@.so.*
++f 0644 root root ${libdir} ./src/.libs/libccrtp1-@TW_LT_RELEASE@.so.*
+ %system linux solaris
+-f 0644 root root ${libdir} ./src/.libs/libccrtp1-@LT_RELEASE@.so.*.*.*
++f 0644 root root ${libdir} ./src/.libs/libccrtp1-@TW_LT_RELEASE@.so.*.*.*
+ %system linux freebsd
+ %postinstall /sbin/ldconfig
+ %postremove /sbin/ldconfig
+diff -urN ccrtp-1.6.2.org/configure.ac ccrtp-1.6.2/configure.ac
+--- ccrtp-1.6.2.org/configure.ac	2008-08-20 20:45:59.000000000 +0200
++++ ccrtp-1.6.2/configure.ac	2008-08-23 12:59:37.621348106 +0200
+@@ -33,8 +33,8 @@
+ 
+ VERSION="1.6.2"
+ REQUIRES="1.3.0"
+-LT_RELEASE="1.6"
+-LT_VERSION="1:1"
++TW_LT_RELEASE="1.6"
++TW_LT_VERSION="1:1"
+ AC_CONFIG_AUX_DIR(autoconf)
+ AC_CANONICAL_SYSTEM
+ AC_PROG_CPP
+@@ -107,7 +107,7 @@
+ 
+ OST_PROG_COMMON
+ OST_PROG_LIBVER
+-OST_PROG_LIBRARY(CCXX,[$LT_VERSION])
++OST_PROG_LIBRARY(CCXX,[$TW_LT_VERSION])
+ OST_AUTOMAKE_MODE
+ OST_MAINTAINER_MODE
+ PKG_CHECK_MODULES(COMMON, libccgnu2 >= $REQUIRES)
+@@ -136,7 +136,7 @@
+ ])
+ 
+ KDOC_DIR="\$(top_srcdir)/doc"
+-AC_SUBST(LT_RELEASE)
++AC_SUBST(TW_LT_RELEASE)
+ AC_SUBST(KDOC_DIR)
+ 
+ AC_PATH_PROG(DOXYGEN, doxygen, no)
+diff -urN ccrtp-1.6.2.org/demo/Makefile.am ccrtp-1.6.2/demo/Makefile.am
+--- ccrtp-1.6.2.org/demo/Makefile.am	2008-06-23 15:02:24.000000000 +0200
++++ ccrtp-1.6.2/demo/Makefile.am	2008-08-23 12:59:39.984056056 +0200
+@@ -9,9 +9,9 @@
+ # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ 
+ AUTOMAKE_OPTIONS = no-dependencies dist-shar
+-LT_VERSION=@LT_CCXX_VERSION@
++TW_LT_VERSION=@LT_CCXX_VERSION@
+ #ignored for programs
+-#$(LT_VERSION) -release $(LT_RELEASE)
++#$(TW_LT_VERSION) -release $(TW_LT_RELEASE)
+ AM_CXXFLAGS = @WARN_FLAGS@ -I$(top_srcdir)/src
+ ccxxincludedir=$(includedir)/cc++
+ 
+diff -urN ccrtp-1.6.2.org/demo/Makefile.in ccrtp-1.6.2/demo/Makefile.in
+--- ccrtp-1.6.2.org/demo/Makefile.in	2008-08-20 20:46:51.000000000 +0200
++++ ccrtp-1.6.2/demo/Makefile.in	2008-08-23 12:59:39.984056056 +0200
+@@ -195,7 +195,7 @@
+ LT_CCXX_VERSION = @LT_CCXX_VERSION@
+ LT_MAJOR = @LT_MAJOR@
+ LT_MINOR = @LT_MINOR@
+-LT_RELEASE = @LT_RELEASE@
++TW_LT_RELEASE = @TW_LT_RELEASE@
+ LT_SUBVER = @LT_SUBVER@
+ MAINT = @MAINT@
+ MAKEINFO = @MAKEINFO@
+@@ -273,9 +273,9 @@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ AUTOMAKE_OPTIONS = no-dependencies dist-shar
+-LT_VERSION = @LT_CCXX_VERSION@
++TW_LT_VERSION = @LT_CCXX_VERSION@
+ #ignored for programs
+-#$(LT_VERSION) -release $(LT_RELEASE)
++#$(TW_LT_VERSION) -release $(TW_LT_RELEASE)
+ AM_CXXFLAGS = @WARN_FLAGS@ -I$(top_srcdir)/src
+ ccxxincludedir = $(includedir)/cc++
+ @SRTP_GCRYPT_TRUE@srtp_src = ccsrtptest
+diff -urN ccrtp-1.6.2.org/doc/Makefile.in ccrtp-1.6.2/doc/Makefile.in
+--- ccrtp-1.6.2.org/doc/Makefile.in	2008-08-20 20:46:51.000000000 +0200
++++ ccrtp-1.6.2/doc/Makefile.in	2008-08-23 12:59:40.014681091 +0200
+@@ -133,7 +133,7 @@
+ LT_CCXX_VERSION = @LT_CCXX_VERSION@
+ LT_MAJOR = @LT_MAJOR@
+ LT_MINOR = @LT_MINOR@
+-LT_RELEASE = @LT_RELEASE@
++TW_LT_RELEASE = @TW_LT_RELEASE@
+ LT_SUBVER = @LT_SUBVER@
+ MAINT = @MAINT@
+ MAKEINFO = @MAKEINFO@
+diff -urN ccrtp-1.6.2.org/m4/Makefile.in ccrtp-1.6.2/m4/Makefile.in
+--- ccrtp-1.6.2.org/m4/Makefile.in	2008-08-20 20:46:51.000000000 +0200
++++ ccrtp-1.6.2/m4/Makefile.in	2008-08-23 12:59:40.018014492 +0200
+@@ -109,7 +109,7 @@
+ LT_CCXX_VERSION = @LT_CCXX_VERSION@
+ LT_MAJOR = @LT_MAJOR@
+ LT_MINOR = @LT_MINOR@
+-LT_RELEASE = @LT_RELEASE@
++TW_LT_RELEASE = @TW_LT_RELEASE@
+ LT_SUBVER = @LT_SUBVER@
+ MAINT = @MAINT@
+ MAKEINFO = @MAKEINFO@
+diff -urN ccrtp-1.6.2.org/m4/ost_prog.m4 ccrtp-1.6.2/m4/ost_prog.m4
+--- ccrtp-1.6.2.org/m4/ost_prog.m4	2008-06-23 15:02:23.000000000 +0200
++++ ccrtp-1.6.2/m4/ost_prog.m4	2008-08-23 12:59:40.018014492 +0200
+@@ -45,10 +45,10 @@
+ ])
+ 
+ AC_DEFUN([OST_PROG_LIBVER],[
+-	LT_MAJOR="`echo $LT_VERSION | sed s/:.*$//`"
+-	LT_MINOR="`echo $LT_VERSION | sed s/.*://`"
++	LT_MAJOR="`echo $TW_LT_VERSION | sed s/:.*$//`"
++	LT_MINOR="`echo $TW_LT_VERSION | sed s/.*://`"
+ 	LT_SUBVER="$LT_MAJOR.$LT_MINOR"
+-	AC_SUBST(LT_RELEASE)
++	AC_SUBST(TW_LT_RELEASE)
+ 	AC_SUBST(LT_SUBVER)
+ 	AC_SUBST(LT_MAJOR)
+ 	AC_SUBST(LT_MINOR)
+diff -urN ccrtp-1.6.2.org/Makefile.in ccrtp-1.6.2/Makefile.in
+--- ccrtp-1.6.2.org/Makefile.in	2008-08-20 20:46:51.000000000 +0200
++++ ccrtp-1.6.2/Makefile.in	2008-08-23 12:59:37.624057039 +0200
+@@ -149,7 +149,7 @@
+ LT_CCXX_VERSION = @LT_CCXX_VERSION@
+ LT_MAJOR = @LT_MAJOR@
+ LT_MINOR = @LT_MINOR@
+-LT_RELEASE = @LT_RELEASE@
++TW_LT_RELEASE = @TW_LT_RELEASE@
+ LT_SUBVER = @LT_SUBVER@
+ MAINT = @MAINT@
+ MAKEINFO = @MAKEINFO@
+diff -urN ccrtp-1.6.2.org/phone/Makefile.am ccrtp-1.6.2/phone/Makefile.am
+--- ccrtp-1.6.2.org/phone/Makefile.am	2008-06-23 15:02:28.000000000 +0200
++++ ccrtp-1.6.2/phone/Makefile.am	2008-08-23 12:59:40.078014385 +0200
+@@ -9,8 +9,8 @@
+ # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ 
+ AUTOMAKE_OPTIONS = no-dependencies dist-shar
+-LT_VERSION=@LT_CCXX_VERSION@
+-#$(LT_VERSION) -release $(LT_RELEASE)
++TW_LT_VERSION=@LT_CCXX_VERSION@
++#$(TW_LT_VERSION) -release $(TW_LT_RELEASE)
+ AM_CXXFLAGS = @WARN_FLAGS@ -I$(top_srcdir)/src
+ ccxxincludedir=$(includedir)/ccrtp
+ EXTRA_DIST = phone.conf
+diff -urN ccrtp-1.6.2.org/phone/Makefile.in ccrtp-1.6.2/phone/Makefile.in
+--- ccrtp-1.6.2.org/phone/Makefile.in	2008-08-20 20:46:51.000000000 +0200
++++ ccrtp-1.6.2/phone/Makefile.in	2008-08-23 12:59:40.087398097 +0200
+@@ -141,7 +141,7 @@
+ LT_CCXX_VERSION = @LT_CCXX_VERSION@
+ LT_MAJOR = @LT_MAJOR@
+ LT_MINOR = @LT_MINOR@
+-LT_RELEASE = @LT_RELEASE@
++TW_LT_RELEASE = @TW_LT_RELEASE@
+ LT_SUBVER = @LT_SUBVER@
+ MAINT = @MAINT@
+ MAKEINFO = @MAKEINFO@
+@@ -219,8 +219,8 @@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ AUTOMAKE_OPTIONS = no-dependencies dist-shar
+-LT_VERSION = @LT_CCXX_VERSION@
+-#$(LT_VERSION) -release $(LT_RELEASE)
++TW_LT_VERSION = @LT_CCXX_VERSION@
++#$(TW_LT_VERSION) -release $(TW_LT_RELEASE)
+ AM_CXXFLAGS = @WARN_FLAGS@ -I$(top_srcdir)/src
+ ccxxincludedir = $(includedir)/ccrtp
+ EXTRA_DIST = phone.conf
+diff -urN ccrtp-1.6.2.org/src/Makefile.am ccrtp-1.6.2/src/Makefile.am
+--- ccrtp-1.6.2.org/src/Makefile.am	2008-06-23 15:02:25.000000000 +0200
++++ ccrtp-1.6.2/src/Makefile.am	2008-08-23 12:59:40.157391048 +0200
+@@ -9,10 +9,10 @@
+ # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ 
+ AUTOMAKE_OPTIONS = no-dependencies dist-shar
+-LT_VERSION=@LT_CCXX_VERSION@
++TW_LT_VERSION=@LT_CCXX_VERSION@
+ AM_CXXFLAGS= @WARN_FLAGS@
+-# RELEASE = $(LT_VERSION) -release $(LT_RELEASE)
+-RELEASE = $(LT_VERSION) -release $(LT_RELEASE) @GNULIBS@
++# RELEASE = $(TW_LT_VERSION) -release $(TW_LT_RELEASE)
++RELEASE = $(TW_LT_VERSION) -release $(TW_LT_RELEASE) @GNULIBS@
+ LIBS = @GNULIBS@
+ 
+ lib_LTLIBRARIES = libccrtp1.la
+diff -urN ccrtp-1.6.2.org/src/Makefile.in ccrtp-1.6.2/src/Makefile.in
+--- ccrtp-1.6.2.org/src/Makefile.in	2008-08-20 20:46:51.000000000 +0200
++++ ccrtp-1.6.2/src/Makefile.in	2008-08-23 12:59:40.160725881 +0200
+@@ -166,7 +166,7 @@
+ LT_CCXX_VERSION = @LT_CCXX_VERSION@
+ LT_MAJOR = @LT_MAJOR@
+ LT_MINOR = @LT_MINOR@
+-LT_RELEASE = @LT_RELEASE@
++TW_LT_RELEASE = @TW_LT_RELEASE@
+ LT_SUBVER = @LT_SUBVER@
+ MAINT = @MAINT@
+ MAKEINFO = @MAKEINFO@
+@@ -244,10 +244,10 @@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ AUTOMAKE_OPTIONS = no-dependencies dist-shar
+-LT_VERSION = @LT_CCXX_VERSION@
++TW_LT_VERSION = @LT_CCXX_VERSION@
+ AM_CXXFLAGS = @WARN_FLAGS@
+-# RELEASE = $(LT_VERSION) -release $(LT_RELEASE)
+-RELEASE = $(LT_VERSION) -release $(LT_RELEASE) @GNULIBS@
++# RELEASE = $(TW_LT_VERSION) -release $(TW_LT_RELEASE)
++RELEASE = $(TW_LT_VERSION) -release $(TW_LT_RELEASE) @GNULIBS@
+ lib_LTLIBRARIES = libccrtp1.la
+ @SRTP_OPENSSL_TRUE@srtp_src_o = ccrtp/crypto/openssl/hmac.cxx \
+ @SRTP_OPENSSL_TRUE@		ccrtp/crypto/openssl/AesSrtp.cxx \
+diff -urN ccrtp-1.6.2.org/w32/Makefile.in ccrtp-1.6.2/w32/Makefile.in
+--- ccrtp-1.6.2.org/w32/Makefile.in	2008-08-20 20:46:51.000000000 +0200
++++ ccrtp-1.6.2/w32/Makefile.in	2008-08-23 12:59:40.177389319 +0200
+@@ -108,7 +108,7 @@
+ LT_CCXX_VERSION = @LT_CCXX_VERSION@
+ LT_MAJOR = @LT_MAJOR@
+ LT_MINOR = @LT_MINOR@
+-LT_RELEASE = @LT_RELEASE@
++TW_LT_RELEASE = @TW_LT_RELEASE@
+ LT_SUBVER = @LT_SUBVER@
+ MAINT = @MAINT@
+ MAKEINFO = @MAKEINFO@
