@@ -21,9 +21,9 @@ diff -urN ccrtp-1.6.2.org/configure.ac ccrtp-1.6.2/configure.ac
  VERSION="1.6.2"
  REQUIRES="1.3.0"
 -LT_RELEASE="1.7"
--LT_VERSION="0:0"
+-LT_VERSION="0:1"
 +TW_LT_RELEASE="1.7"
-+TW_LT_VERSION="0:0"
++TW_LT_VERSION="0:1"
  AC_CONFIG_AUX_DIR(autoconf)
  AC_CANONICAL_SYSTEM
  AC_PROG_CPP
