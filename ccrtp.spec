@@ -1,20 +1,28 @@
-Summary:	Common C++ class framework for RTP/RTCP
-Summary(pl.UTF-8):	Szkielet klas C++ dla RTP/RTCP
+#
+# Conditional build:
+%bcond_with	gcrypt	# use libgcrypt instead of OpenSSL (ucommon in PLD uses OpenSSL by default)
+#
+Summary:	Common C++ class framework for RTP packets
+Summary(pl.UTF-8):	Szkielet klas C++ dla pakietów RTP
 Name:		ccrtp
-Version:	1.7.1
+Version:	2.0.2
 Release:	1
-License:	GPL
+License:	GPL v2+ with runtime exception
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/ccrtp/%{name}-%{version}.tar.gz
-# Source0-md5:	9f5d34a18f2c1c779d2e5818cc4987f8
-Patch0:		%{name}-gcc4.patch
-Patch1:		%{name}-lt.patch
+# Source0-md5:	dd676a6359e549b5a45ed3992e8a7056
+Patch0:		%{name}-info.patch
+Patch1:		%{name}-openssl.patch
 URL:		http://www.gnu.org/software/ccrtp/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	commoncpp2-devel >= 1.7.1
 BuildRequires:	doxygen
-BuildRequires:	libtool
+%{?with_gcrypt:BuildRequires:	libgcrypt-devel >= 1.2.3}
+BuildRequires:	libstdc++-devel
+BuildRequires:	libtool >= 2:1.5
+%{!?with_gcrypt:BuildRequires:	openssl-devel}
+BuildRequires:	pkgconfig
+BuildRequires:	ucommon-devel >= 5.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -42,7 +50,10 @@ Summary:	Header files for ccrtp library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki ccrtp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	commoncpp2-devel
+%{?with_gcrypt:Requires:	libgcrypt-devel >= 1.2.3}
+Requires:	libstdc++-devel
+%{!?with_gcrypt:Requires:	openssl-devel}
+Requires:	ucommon-devel >= 5.0.0
 
 %description devel
 Header files for ccrtp library.
@@ -73,7 +84,9 @@ Statyczna biblioteka ccrtp.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+# LIBGCRYPT_CONFIG is a hack to disable libgcrypt and pass to openssl detection
+%configure \
+	%{!?with_gcrypt:LIBGCRYPT_CONFIG=/bin/false}
 %{__make}
 
 %install
@@ -90,18 +103,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS COPYING COPYING.addendum README
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%doc AUTHORS COPYING.addendum ChangeLog NEWS README TODO
+%attr(755,root,root) %{_libdir}/libccrtp.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libccrtp.so.0
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/html/*.html doc/html/*.*g*
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%doc doc/html/*.{css,html,js,png}
+%attr(755,root,root) %{_libdir}/libccrtp.so
+%{_libdir}/libccrtp.la
 %{_includedir}/ccrtp
-%{_pkgconfigdir}/*.pc
-%{_infodir}/*.info*
+%{_pkgconfigdir}/libccrtp.pc
+%{_infodir}/ccrtp.info*
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libccrtp.a

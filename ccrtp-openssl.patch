@@ -1,0 +1,22 @@
+--- ccrtp-2.0.2/src/Makefile.am.orig	2011-10-30 16:03:54.000000000 +0100
++++ ccrtp-2.0.2/src/Makefile.am	2012-01-03 16:53:30.349046258 +0100
+@@ -19,7 +19,7 @@
+ if SRTP_OPENSSL
+ srtp_src_o =    ccrtp/crypto/openssl/hmac.cpp \
+         ccrtp/crypto/openssl/AesSrtp.cxx \
+-        ccrtp/crypto/openssl/InitializeOpenSSL.cxx
++        ccrtp/crypto/openssl/InitializeOpenSSL.cxx ccrtp/crypto/twofish.c
+ endif
+ 
+ if SRTP_GCRYPT
+--- ccrtp-2.0.2/configure.ac.orig	2011-11-13 23:49:08.000000000 +0100
++++ ccrtp-2.0.2/configure.ac	2012-01-03 17:07:33.392407821 +0100
+@@ -95,7 +95,7 @@
+                   ],
+                   [AC_CHECK_LIB([crypto],
+                       [EVP_CipherInit_ex],
+-                      [AC_CHECK_HEADERS([openssl/bn.h openssl/aes.h openssl/sha.h],
++                      [AC_CHECK_HEADERS([openssl/bn.h openssl/aes.h openssl/sha.h pthread.h],
+                                         [], AC_MSG_ERROR([OpenSSL headers not found.]))
+                        LIBS="-lcrypto $LIBS"
+                        openssl="true"
