@@ -6,7 +6,7 @@ Summary:	Common C++ class framework for RTP packets
 Summary(pl.UTF-8):	Szkielet klas C++ dla pakietów RTP
 Name:		ccrtp
 Version:	2.0.2
-Release:	1
+Release:	2
 License:	GPL v2+ with runtime exception
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/ccrtp/%{name}-%{version}.tar.gz
@@ -86,7 +86,7 @@ Statyczna biblioteka ccrtp.
 %{__automake}
 # LIBGCRYPT_CONFIG is a hack to disable libgcrypt and pass to openssl detection
 %configure \
-	%{!?with_gcrypt:LIBGCRYPT_CONFIG=/bin/false}
+	%{!?with_gcrypt:LIBGCRYPT_CONFIG=/nonexisting}
 %{__make}
 
 %install
