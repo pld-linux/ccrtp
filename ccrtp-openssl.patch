@@ -1,11 +1,11 @@
---- ccrtp-2.0.2/src/Makefile.am.orig	2011-10-30 16:03:54.000000000 +0100
-+++ ccrtp-2.0.2/src/Makefile.am	2012-01-03 16:53:30.349046258 +0100
-@@ -19,7 +19,7 @@
+--- ccrtp-2.0.3/src/Makefile.am.orig	2012-03-21 15:18:01.000000000 +0100
++++ ccrtp-2.0.3/src/Makefile.am	2012-04-17 20:53:26.361473681 +0200
+@@ -22,7 +22,7 @@
+ 
  if SRTP_OPENSSL
  srtp_src_o =    ccrtp/crypto/openssl/hmac.cpp \
-         ccrtp/crypto/openssl/AesSrtp.cxx \
--        ccrtp/crypto/openssl/InitializeOpenSSL.cxx
-+        ccrtp/crypto/openssl/InitializeOpenSSL.cxx ccrtp/crypto/twofish.c
+-        ccrtp/crypto/openssl/SrtpSymCrypto.cpp
++        ccrtp/crypto/openssl/SrtpSymCrypto.cpp ccrtp/crypto/twofish.c
  endif
  
  if SRTP_GCRYPT
