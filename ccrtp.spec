@@ -16,7 +16,7 @@ Patch1:		%{name}-openssl.patch
 URL:		http://www.gnu.org/software/ccrtp/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	doxygen
+BuildRequires:	doxygen >= 1.8.0
 %{?with_gcrypt:BuildRequires:	libgcrypt-devel >= 1.2.3}
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
