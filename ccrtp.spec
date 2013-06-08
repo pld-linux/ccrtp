@@ -13,6 +13,7 @@ Source0:	http://ftp.gnu.org/gnu/ccrtp/%{name}-%{version}.tar.gz
 # Source0-md5:	ca0a7a184b242d660d81caf6101a2c0c
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-openssl.patch
+Patch2:		%{name}-am.patch
 URL:		http://www.gnu.org/software/ccrtp/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -77,6 +78,7 @@ Statyczna biblioteka ccrtp.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}
