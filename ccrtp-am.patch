@@ -1,9 +1,9 @@
---- ccrtp-2.0.6/configure.ac.orig	2013-06-08 13:36:58.037397544 +0200
-+++ ccrtp-2.0.6/configure.ac	2013-06-08 13:37:38.825952025 +0200
-@@ -43,7 +43,7 @@
- # OST_PROG_CC_POSIX
+--- ccrtp-2.0.7/configure.ac.orig	2014-01-09 20:33:23.429502801 +0100
++++ ccrtp-2.0.7/configure.ac	2014-01-09 20:46:11.366137242 +0100
+@@ -23,7 +23,7 @@
+ AC_LIBTOOL_WIN32_DLL
  AM_PROG_LIBTOOL
- AM_INIT_AUTOMAKE(ccrtp,[$VERSION])
+ AM_INIT_AUTOMAKE([dist-zip])
 -AM_CONFIG_HEADER(ccrtp-config.h)
 +AC_CONFIG_HEADERS(ccrtp-config.h)
  

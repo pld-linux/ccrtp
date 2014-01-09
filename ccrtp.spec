@@ -5,12 +5,12 @@
 Summary:	Common C++ class framework for RTP packets
 Summary(pl.UTF-8):	Szkielet klas C++ dla pakietów RTP
 Name:		ccrtp
-Version:	2.0.6
+Version:	2.0.7
 Release:	1
 License:	GPL v2+ with runtime exception
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/ccrtp/%{name}-%{version}.tar.gz
-# Source0-md5:	ca0a7a184b242d660d81caf6101a2c0c
+# Source0-md5:	a71a7b105e97b44e218d931d58d9acaf
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-openssl.patch
 Patch2:		%{name}-am.patch
@@ -107,7 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING.addendum ChangeLog NEWS README TODO
 %attr(755,root,root) %{_libdir}/libccrtp.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libccrtp.so.0
+%attr(755,root,root) %ghost %{_libdir}/libccrtp.so.2
 
 %files devel
 %defattr(644,root,root,755)
