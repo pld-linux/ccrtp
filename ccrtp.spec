@@ -5,12 +5,12 @@
 Summary:	Common C++ class framework for RTP packets
 Summary(pl.UTF-8):	Szkielet klas C++ dla pakietów RTP
 Name:		ccrtp
-Version:	2.0.9
+Version:	2.1.1
 Release:	1
 License:	GPL v2+ with runtime exception
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/ccrtp/%{name}-%{version}.tar.gz
-# Source0-md5:	f2e143c2558fbbe5715a1f04be2fb692
+# Source0-md5:	4c3c3a63191602ddb05dedc798ae4300
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-openssl.patch
 Patch2:		%{name}-am.patch
@@ -23,7 +23,7 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
 %{!?with_gcrypt:BuildRequires:	openssl-devel}
 BuildRequires:	pkgconfig
-BuildRequires:	ucommon-devel >= 5.0.0
+BuildRequires:	ucommon-devel >= 6.2.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -54,7 +54,7 @@ Requires:	%{name} = %{version}-%{release}
 %{?with_gcrypt:Requires:	libgcrypt-devel >= 1.2.3}
 Requires:	libstdc++-devel
 %{!?with_gcrypt:Requires:	openssl-devel}
-Requires:	ucommon-devel >= 5.0.0
+Requires:	ucommon-devel >= 6.2.2
 
 %description devel
 Header files for ccrtp library.
@@ -107,7 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING.addendum ChangeLog NEWS README TODO
 %attr(755,root,root) %{_libdir}/libccrtp.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libccrtp.so.2
+%attr(755,root,root) %ghost %{_libdir}/libccrtp.so.3
 
 %files devel
 %defattr(644,root,root,755)

@@ -1,11 +1,11 @@
---- ccrtp-2.0.7/configure.ac.orig	2014-01-09 20:33:23.429502801 +0100
-+++ ccrtp-2.0.7/configure.ac	2014-01-09 20:46:11.366137242 +0100
+--- ccrtp-2.1.1/configure.ac.orig	2014-11-18 17:13:50.278635184 +0100
++++ ccrtp-2.1.1/configure.ac	2014-11-18 17:14:21.495300541 +0100
 @@ -23,7 +23,7 @@
  AC_LIBTOOL_WIN32_DLL
  AM_PROG_LIBTOOL
  AM_INIT_AUTOMAKE([dist-zip])
 -AM_CONFIG_HEADER(ccrtp-config.h)
-+AC_CONFIG_HEADERS(ccrtp-config.h)
++AC_CONFIG_HEADERS([ccrtp-config.h])
+ AC_CONFIG_MACRO_DIR([m4])
  
  AC_C_RESTRICT
- AC_C_VOLATILE
