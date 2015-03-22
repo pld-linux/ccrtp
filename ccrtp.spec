@@ -1,12 +1,12 @@
 #
 # Conditional build:
 %bcond_with	gcrypt	# use libgcrypt instead of OpenSSL (ucommon in PLD uses OpenSSL by default)
-#
+
 Summary:	Common C++ class framework for RTP packets
 Summary(pl.UTF-8):	Szkielet klas C++ dla pakietów RTP
 Name:		ccrtp
 Version:	2.1.1
-Release:	2
+Release:	3
 License:	GPL v2+ with runtime exception
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/ccrtp/%{name}-%{version}.tar.gz
@@ -102,6 +102,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
+
+%post	devel -p /sbin/postshell
+-/usr/sbin/fix-info-dir -c %{_infodir}
+
+%postun	devel -p /sbin/postshell
+-/usr/sbin/fix-info-dir -c %{_infodir}
 
 %files
 %defattr(644,root,root,755)
