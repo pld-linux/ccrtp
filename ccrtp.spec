@@ -1,12 +1,12 @@
 #
 # Conditional build:
-%bcond_with	gcrypt	# use libgcrypt instead of OpenSSL (ucommon in PLD uses OpenSSL by default)
+%bcond_without	gcrypt	# use libgcrypt instead of OpenSSL (ucommon in PLD uses OpenSSL by default)
 
 Summary:	Common C++ class framework for RTP packets
 Summary(pl.UTF-8):	Szkielet klas C++ dla pakietów RTP
 Name:		ccrtp
 Version:	2.1.2
-Release:	4
+Release:	5
 License:	GPL v2+ with runtime exception
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/ccrtp/%{name}-%{version}.tar.gz
