@@ -1,12 +1,12 @@
 #
 # Conditional build:
-%bcond_without	gcrypt	# use libgcrypt instead of OpenSSL (ucommon in PLD uses OpenSSL by default)
+%bcond_without	gcrypt	# libgcrypt instead of OpenSSL (default should match ucommon)
 
 Summary:	Common C++ class framework for RTP packets
 Summary(pl.UTF-8):	Szkielet klas C++ dla pakietów RTP
 Name:		ccrtp
 Version:	2.1.2
-Release:	6
+Release:	7
 License:	GPL v2+ with runtime exception
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/ccrtp/%{name}-%{version}.tar.gz
@@ -23,6 +23,7 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
 %{!?with_gcrypt:BuildRequires:	openssl-devel}
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	ucommon-devel >= 6.2.2
 Requires:	ucommon >= 6.2.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -75,6 +76,18 @@ Static ccrtp library.
 %description static -l pl.UTF-8
 Statyczna biblioteka ccrtp.
 
+%package apidocs
+Summary:	API documentation for ccrtp library
+Summary(pl.UTF-8):	Dokumentacja API biblioteki ccrtp
+Group:		Documentation
+BuildArch:	noarch
+
+%description apidocs
+API documentation for ccrtp library.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API biblioteki ccrtp.
+
 %prep
 %setup -q
 %patch -P0 -p1
@@ -98,6 +111,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libccrtp.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -113,14 +129,12 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING.addendum ChangeLog NEWS README TODO
-%attr(755,root,root) %{_libdir}/libccrtp.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libccrtp.so.3
+%{_libdir}/libccrtp.so.*.*.*
+%ghost %{_libdir}/libccrtp.so.3
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/html/*.{css,html,js,png}
-%attr(755,root,root) %{_libdir}/libccrtp.so
-%{_libdir}/libccrtp.la
+%{_libdir}/libccrtp.so
 %{_includedir}/ccrtp
 %{_pkgconfigdir}/libccrtp.pc
 %{_infodir}/ccrtp.info*
@@ -128,3 +142,7 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libccrtp.a
+
+%files apidocs
+%defattr(644,root,root,755)
+%doc doc/html/*.{css,html,js,png}
